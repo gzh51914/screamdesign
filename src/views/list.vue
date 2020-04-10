@@ -1,5 +1,6 @@
 <template>
-    <div class="list">分类</div>
+    <div class="list">
+    </div>
 </template>
 
 <script>

@@ -1,5 +1,7 @@
 <template>
-    <div class="order">我的订单</div>
+    <div class="order">
+        确认订单
+    </div>
 </template>
 
 <script>

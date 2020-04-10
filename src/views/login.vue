@@ -91,16 +91,16 @@ Vue.use(CellGroup);
 export default {
   data() {
     return {
-      username: 18269137161,
-      password: "a123456",
-      password1: "a123456",
+      username: "",
+      password: "",
+      password1: "",
       errormsg: "",
       errorpsw: "",
       errorpsw1: "",
       errormsg1: "",
       errorpsw2: "",
       errorverify: "",
-      usernamelogin: 18269137161,
+      usernamelogin: "",
       passwordlogin: "",
       verify: "",
       identifyCodes: "1234567890",
@@ -224,9 +224,11 @@ export default {
             password: this.passwordlogin
           })
           .then(res => {
-            console.log(res.data);
+            console.log(res);
             if (res.data.type === 1) {
               localStorage.setItem("token", res.data.authorization);
+              localStorage.setItem("uid",res.data.datalist.uid)
+              localStorage.setItem("username",res.data.datalist.username)
               this.$router.replace(localStorage.getItem("path"));
             }
           })
