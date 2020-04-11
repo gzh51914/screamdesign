@@ -3,20 +3,24 @@
     <van-tabbar @click="active" :fixed="false">
       <van-tabbar-item icon="home-o" @click="onClickLeft"></van-tabbar-item>
       <van-tabbar-item>消息中心</van-tabbar-item>
-      <van-tabbar-item @click="isShow=!isShow">全部已读</van-tabbar-item>
+      <van-tabbar-item @click="isShow = !isShow">全部已读</van-tabbar-item>
     </van-tabbar>
-    <div id="commentRoot" v-for="(item,index) in list" :key="index">
-      <div class="messageListItemTime">{{item.createTime}}</div>
+    <div id="commentRoot" v-for="(item, index) in list" :key="index">
+      <div class="messageListItemTime">{{ item.createTime }}</div>
       <div class="clearfix messageListItem">
         <div class="messageListItemRihgt">
           <div class="messageListItemRihgtTop">
-            <span class="columnName">{{item.msgTitle}}</span>
+            <span class="columnName">{{ item.msgTitle }}</span>
             <a class="messageTitleRight">
-              <van-icon name="arrow" size="0.2rem" @click="toDetail(item.targetId)" />
+              <van-icon
+                name="arrow"
+                size="0.2rem"
+                @click="toDetail(item.targetId)"
+              />
             </a>
           </div>
 
-          <p class="messageContent">{{item.msgContent}}</p>
+          <p class="messageContent">{{ item.msgContent }}</p>
           <p class="messageFlag" v-if="isShow">•</p>
         </div>
       </div>
@@ -52,6 +56,9 @@ export default {
     }
   },
   created () {
+    // props: ["id"];
+    console.log(this.$route.params.id)
+
     axios.get('http://114.215.128.76:3000/goods/messages').then(res => {
       console.log(res.data)
       this.list = res.data
