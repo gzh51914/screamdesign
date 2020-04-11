@@ -78,7 +78,7 @@
 
 <script>
 import Vue from "vue";
-import { Button, Field, CellGroup, NavBar } from "vant";
+import { Button, Field, CellGroup, NavBar, Toast } from "vant";
 import { instance2 } from "@/utils/http";
 import SIdentify from "@/components/identify.vue";
 
@@ -87,6 +87,7 @@ Vue.use(NavBar);
 Vue.use(Button);
 Vue.use(Field);
 Vue.use(CellGroup);
+Vue.use(Toast);
 
 export default {
   data() {
@@ -226,6 +227,7 @@ export default {
           .then(res => {
             console.log(res);
             if (res.data.type === 1) {
+              Toast("登录成功");
               localStorage.setItem("token", res.data.authorization);
               localStorage.setItem("uid",res.data.datalist.uid)
               localStorage.setItem("username",res.data.datalist.username)

@@ -7,12 +7,7 @@
       @click-left="onClickLeft"
       @click-right="onClickRight"
     />
-    <div class="nullcart" v-if="isCartShow">
-      <p>您的购物车还是空的</p>
-      <van-button color="#ffd444">看看收藏</van-button>
-      <van-button color="#ffd444" @click="goto">去逛逛</van-button>
-    </div>
-    <div class="cart" v-else>
+    <div class="cart" v-if="cartdata.length">
       <div class="order-pro" v-for="(item,index) in cartdata" :key="item.goods_id">
         <div class="select">
           <van-checkbox v-model="cartdata[index].isok" checked-color="#202020" @click="changetype(item.goods_id, cartdata[index].isok)" ></van-checkbox>
@@ -24,14 +19,21 @@
           </template>
         </van-card>
       </div>
-    </div>
-    <div class="cartfoot">
+      <div class="cartfoot">
       <van-checkbox checked-color="#202020" class="allselect" v-model="checked" @click="checkall">全选</van-checkbox>
       <div class="sum" v-if="isSumShow">
         <span style="font-size: 14px;colo: black">合计：</span>
         <span style="color:red">￥{{allprice}}</span>
       </div>
-      <van-button :text="buttonText" :color="btnColor" @click="onSubmit"></van-button>
+      <van-button text="去结算" color="#ffd444" @click="onSubmit(total,allprice)"></van-button>
+      <van-button text="删除" color="#000" @click="delgoods" v-if="isDelshow"></van-button>
+    </div>
+    </div>
+    <div class="nullcart" v-else>
+      <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1586592451641&di=9e3f0d17b2efaa444c5c29062240b3a0&imgtype=0&src=http%3A%2F%2Fpic.51yuansu.com%2Fpic3%2Fcover%2F03%2F21%2F07%2F5b6aec3a9b934_610.jpg" alt="">
+      <p>购物车竟然是空的</p><br>
+      <p>"再忙，也要记得买点什么犒劳自己"</p>
+      <van-button color="#ffd444" @click="goto">去逛逛吧</van-button>
     </div>
   </div>
 </template>
@@ -47,7 +49,9 @@ import {
   Stepper,
   Card,
   SubmitBar,
-  Tag
+  Tag,
+  Dialog,
+  Toast
 } from "vant";
 
 Vue.use(Button);
@@ -58,14 +62,17 @@ Vue.use(Stepper);
 Vue.use(Card);
 Vue.use(SubmitBar);
 Vue.use(Tag);
+Vue.use(Dialog);
+Vue.use(Toast);
 export default {
   data() {
     return {
       rightText: ["完成", "编辑"],
-      isCartShow: false,
+      isCartShow: true,
       checked: false,
       cartdata: [],
       isSumShow: true,
+      isDelshow: false,
       buttonText: "去结算",
       btnColor: "#ffd444",
       allprice: 0,
@@ -81,21 +88,19 @@ export default {
       this.rightText = this.rightText.reverse();
       if (this.rightText[1] == "编辑") {
         this.isSumShow = true;
-        this.checked = true;
-        this.buttonText = "去结算";
-        this.btnColor = "#ffd444";
+        this.isDelshow = false;
       } else {
         this.isSumShow = false;
-        this.checked = false;
-        this.buttonText = "删除";
-        this.btnColor = "#000";
+        this.isDelshow = true;
       }
+      this.checkall()
+      this.changenum()
+      this.changetype()
     },
     // 请求订单里的数据
     getorder () {
-      // console.log(this.uid)
       instance2.get(`http://114.215.128.76:3000/goods/oders?uid=${this.uid}`).then(res => {
-        console.log(res)
+        // console.log(res)
         this.cartdata = res.data.datalist
         this.allprice = res.data.allprice;
         this.total = res.data.total;
@@ -105,7 +110,7 @@ export default {
     // 修改购物车加减
     changeorder ({num = null , goods_id}) {
       instance2.post("http://114.215.128.76:3000/goods/cart", {num,goods_id}).then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         this.cartdata = res.data.datalist
         this.allprice = res.data.allprice;
         this.total = res.data.total;
@@ -114,7 +119,7 @@ export default {
     // 点击复选框修改购物车数量
     changeok ({goods_id = null, isok = null}) {
       instance2.post("http://114.215.128.76:3000/goods/type",{goods_id, isok}).then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         this.cartdata = res.data.datalist
         this.allprice = res.data.allprice;
         this.total = res.data.total;
@@ -123,11 +128,8 @@ export default {
     },
     // 全选
     checkall () {
-      instance2.post(`http://114.215.128.76:3000/goods/Allchangeisok`,{isok:!this.checked,uid:this.uid}).then(res => {
-        console.log(res.data)
-        // this.cartdata = res.data.datalist
-        // this.allprice = res.data.allprice;
-        // this.total = res.data.total;
+      instance2.post("http://114.215.128.76:3000/goods/Allchangeisok",{isok:!this.checked,uid:this.uid}).then(res => {
+        // console.log(res.data)
         this.getorder ()
       })
     },
@@ -139,29 +141,53 @@ export default {
     changetype (goods_id, isok) {
       this.changeok({ isok:!isok, goods_id });
     },
+    // 删除商品
+    delgoods () {
+      Dialog.confirm({
+        message: '确定删除该商品吗'
+      }).then((action) => {
+        if(action == "confirm") {
+         let deleteid=[]
+         let j= this.cartdata.filter(ele => {
+                if(ele.isok){
+                  deleteid.push(ele.goods_id)
+                }
+             }
+          )
+          if(deleteid.length){
+            instance2.post("http://114.215.128.76:3000/goods/remcart",{
+              uid:this.uid,
+              goods_id:deleteid
+            }).then(res => {
+              // console.log(res)
+              if(res.data.type == 1) {
+                Toast('删除成功')
+                this.getorder()
+              }
+            })
+          } else {
+            Toast('请选择要删除的商品')
+          }
+        }
+      }).catch((error) => {
+      });
+    },
     goto() {
       this.$router.push("/home");
     },
     onSubmit() {
-      this.$router.push("/order");
+         let j= this.cartdata.filter(ele => {
+           return ele.isok?ele:""
+             }
+          )
+          console.log(this.total,this.allprice,j)
+      this.$router.push({name: 'order', query: {orderlist:j,total:this.total,allprice:this.allprice}});
     }
   },
   created () {
-    if(localStorage.getItem("uid")) {
-      this.uid = localStorage.getItem("uid")
-    }
+    this.uid = localStorage.getItem("uid")
     this.getorder ()
-  },
-  // computed: {
-  //   checked: {
-  //     get () {
-  //       return this.cartdata.every(item => item.isok)
-  //     },
-  //     set (val) {
-  //       this.cartdata.forEach(item => item.isok = val)
-  //     }
-  //   }
-  // }
+  }
 };
 </script>
 
@@ -183,7 +209,7 @@ export default {
 }
 .cart {
   background: #fff;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 .order-pro {
   padding-left: 0.15rem;
