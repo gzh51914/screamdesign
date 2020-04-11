@@ -1,39 +1,84 @@
 <template>
   <div class="header">
-    <van-tabbar @click="active" :fixed="false">
+    <van-tabbar :fixed="false">
       <van-tabbar-item icon="home-o" @click="onClickLeft"></van-tabbar-item>
       <van-tabbar-item>消息中心</van-tabbar-item>
       <van-tabbar-item icon="friends-o" @click="onClickRight"></van-tabbar-item>
     </van-tabbar>
     <div class="columnList">
       <div id="commentRoot">
-        <div class="clearfix messageInfor" v-for="(item,index) in List" :key="index">
-          <img src="https://m.wowdsgn.com/static/img/official_message.png" class="messageIcon" />
+        <div
+          class="clearfix messageInfor"
+          v-for="item in List"
+          :key="item.msgType"
+        >
+          <img
+            src="https://m.wowdsgn.com/static/img/official_message.png"
+            class="messageIcon"
+          />
           <div class="messageInforRihgt">
             <div class="messageInforRihgtTop">
-              <span class="columnName">{{item.title}}</span>
-              <li
-                href="/message/list?msgType=2"
-                class="columnTitleRight"
-                @click="toList(item.msgType)"
-              >
-                <van-icon name="arrow" size="0.28" />
+              <span class="columnName">{{ item.title }}</span>
+              <li class="columnTitleRight">
+                <van-icon
+                  name="arrow"
+                  size="0.28"
+                  @click="toList(item.msgType)"
+                />
               </li>
             </div>
-            <li href @click="toDetail(item.targetId)">
-              <p class="messageContent">{{item.msgContent}}</p>
+            <li @click="Msg(item.msgType, item.targetId)">
+              <p class="messageContent">
+                {{ item.msgContent }}
+              </p>
 
-              <p class="messageTime">{{item.createTime}}</p>
+              <p class="messageTime">
+                {{ item.createTime }}
+              </p>
             </li>
           </div>
         </div>
       </div>
     </div>
+    <!-- <div class="columnList">
+      <div id="commentRoot">
+        <div class="clearfix messageInfor">
+          <img
+            src="https://m.wowdsgn.com/static/img/official_message.png"
+            class="messageIcon"
+          />
+          <div class="messageInforRihgt">
+            <div class="messageInforRihgtTop">
+              <span class="columnName" v-if="this.List.length">{{
+                this.List[1].title
+              }}</span>
+              <li class="columnTitleRight">
+                <van-icon
+                  name="arrow"
+                  size="0.28"
+                  @click="toList(this.List[1].msgType)"
+                />
+              </li>
+            </div>
+            <li @click="coupon(this.List[1].targetId)">
+              <p class="messageContent" v-if="this.List.length">
+                {{ this.List[1].msgContent }}
+              </p>
+
+              <p class="messageTime" v-if="this.List.length">
+                {{ this.List[1].createTime }}
+              </p>
+            </li>
+          </div>
+        </div>
+      </div>
+    </div> -->
   </div>
 </template>
 <script>
 import Vue from 'vue'
 import axios from 'axios'
+
 import { Tabbar, TabbarItem, Icon } from 'vant'
 Vue.use(Tabbar)
 Vue.use(TabbarItem)
@@ -46,7 +91,6 @@ Vue.use(Icon)
 export default {
   data () {
     return {
-      active: 0,
       List: []
     }
   },
@@ -65,12 +109,15 @@ export default {
       this.$router.push('/mine')
     },
     toList (id) {
-      // this.$router.push(`/new/${id}`)
       this.$router.push(`/news/newslist/${id}`)
+      console.log(2222222)
     },
-    toDetail (id) {
-      // this.$router.push(`/new/${id}`)
-      this.$router.push(`/topic/${id}`)
+    Msg (type, id) {
+      if (type === '1') {
+        this.$router.push('/coupon')
+      } else if (type === '2') {
+        this.$router.push(`/topic/${id}`)
+      }
     }
   }
 }
@@ -127,6 +174,7 @@ export default {
               float: right;
               color: #65686c;
               font-size: 0.22rem;
+              height: 0.4rem;
             }
             .van-icon.van-icon-arrow {
               position: absolute;

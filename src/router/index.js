@@ -45,6 +45,14 @@ const routes = [
     }
   },
   {
+    path: '/coupon',
+    name: 'coupon',
+    component: () => import('../views/coupon.vue'),
+    meta: {
+      footShow: true
+    }
+  },
+  {
     path: '/topic/:id',
     name: 'topic',
     component: () => import('../views/topic.vue'),

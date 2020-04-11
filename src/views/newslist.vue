@@ -28,8 +28,8 @@
   </div>
 </template>
 <script>
-import Vue from 'vue'
 import axios from 'axios'
+import Vue from 'vue'
 import { Tabbar, TabbarItem, Icon } from 'vant'
 Vue.use(Tabbar)
 Vue.use(TabbarItem)
@@ -59,11 +59,13 @@ export default {
     // props: ["id"];
     console.log(this.$route.params.id)
 
-    axios.get('http://114.215.128.76:3000/goods/messages').then(res => {
-      console.log(res.data)
-      this.list = res.data
-      // console.log(res.data[0].msgContent);
-    })
+    axios
+      .get(`http://114.215.128.76:3000/goods/messages?${this.$route.params.id}`)
+      .then(res => {
+        console.log(res.data)
+        this.list = res.data
+        // console.log(res.data[0].msgContent);
+      })
   }
 }
 </script>
