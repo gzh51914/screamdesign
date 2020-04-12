@@ -25,7 +25,15 @@ const routes = [
     name: 'shopCart',
     component: () => import('../views/shopCart.vue'),
     meta: {
-      footShow: true
+      footShow: false
+    }
+  },
+  {
+    path: '/order',
+    name: 'order',
+    component: () => import('../views/order.vue'),
+    meta: {
+      footShow: false
     }
   },
   {
@@ -96,7 +104,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.path === '/news' || to.path === '/mine') {
+  if (to.path === '/news' || to.path === '/mine' || to.path === '/shopCart') {
     if (localStorage.getItem('token')) {
       next()
     } else {
