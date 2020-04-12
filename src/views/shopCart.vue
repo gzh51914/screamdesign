@@ -93,14 +93,14 @@ export default {
         this.isSumShow = false;
         this.isDelshow = true;
       }
-      this.checkall()
+      this.checkall();
       this.changenum()
       this.changetype()
     },
     // 请求订单里的数据
     getorder () {
       instance2.get(`http://114.215.128.76:3000/goods/oders?uid=${this.uid}`).then(res => {
-        // console.log(res)
+        console.log(res)
         this.cartdata = res.data.datalist
         this.allprice = res.data.allprice;
         this.total = res.data.total;
