@@ -80,19 +80,19 @@
         <div class="guodu"></div>
         <!-- 灵感 -->
         <div class="inspiration">
-            <img src="https://img.wowdsgn.com/page/banners/59172e58-af6a-4032-956b-6f3586552017_2dimension_1125x204.jpg" alt="">
+            <img src="https://img.wowdsgn.com/page/banners/59172e58-af6a-4032-956b-6f3586552017_2dimension_1125x204.jpg" alt="" @click="toDolist">
        </div>
 
        <div class="guodu1"></div>
        <!-- 办公指南 -->
        <div class="special">
-            <img src="https://img.wowdsgn.com/page/banners/a656fe78-a708-4ab4-ba93-a92f99c0d629_2dimension_1125x510.jpg" alt="">
+            <img src="https://img.wowdsgn.com/page/banners/a656fe78-a708-4ab4-ba93-a92f99c0d629_2dimension_1125x510.jpg" alt="" @click="toDolist">
        </div>
 
        <div class="guodu2"></div>
        <!-- 专题 -->
        <div class="symposium">
-           <img src="https://img.wowdsgn.com/page/banners/88802682-562d-4e1e-bfee-621ec22b85cc_2dimension_1125x204.jpg" alt="">
+           <img src="https://img.wowdsgn.com/page/banners/88802682-562d-4e1e-bfee-621ec22b85cc_2dimension_1125x204.jpg" alt="" @click="toDolist">
        </div>
 
         <div class="guodu3"></div>
@@ -100,15 +100,15 @@
         <div class="gift">
             <div class="gift-title"></div>
             <div class="gift-img">
-                <img src="https://img.wowdsgn.com/page/banners/0019768c-5af5-4e1f-94c0-36fac481c271_2dimension_1125x690.jpg" alt="">
+                <img src="https://img.wowdsgn.com/page/banners/0019768c-5af5-4e1f-94c0-36fac481c271_2dimension_1125x690.jpg" alt="" @click="toDolist">
             </div>
             <div class="gift-list">
                     <div class="listUl"
                         v-for="priceList in priceLists"
                         :key="priceList.parentProductId"
-                        @click="toDolist(priceList)"
+                        
                     >
-                        <img :src="priceList.productImg" alt="">
+                        <img :src="priceList.productImg" alt="" @click="toDolist">
                         <p class="listUl-title"
                         >{{priceList.productTitle}} </p>
                         <div class="listUl-price">
@@ -125,14 +125,14 @@
         <div class="enter">
             <div class="enter-title"></div>
             <div class="enter-list">
-                <img src="https://img.wowdsgn.com/page/banners/8383de11-9a90-4c12-a681-b4315ef66e9c_2dimension_1125x690.jpg" alt="">
+                <img src="https://img.wowdsgn.com/page/banners/8383de11-9a90-4c12-a681-b4315ef66e9c_2dimension_1125x690.jpg" alt="" @click="toDolist">
             </div>
             <div class="enter-pj">
                 <div class="enter-meiju"
                     v-for="item in priceLists2"
                     :key="item.parentProductId"
                 >
-                    <img :src="item.productImg" alt="">
+                    <img :src="item.productImg" alt="" @click="toDolist">
                     <p class="enter-name">{{item.productTitle}}</p>
                     <div class="enter-price">
                         <span class="salp-price">￥{{item.sellPrice}}</span>
@@ -185,10 +185,10 @@
             <div class="yunying-title"></div>
             <div class="yunying-h">
                 <div class="yunying-hd">
-                    <img src="https://img.wowdsgn.com/page/banners/698e6619-412d-44dd-acaf-83291b2195a5_2dimension_510x672.jpg" alt="">
+                    <img src="https://img.wowdsgn.com/page/banners/698e6619-412d-44dd-acaf-83291b2195a5_2dimension_510x672.jpg" alt="" @click="toDolist">
                 </div>
                 <div class="yunying-hd">
-                    <img src="https://img.wowdsgn.com/page/banners/7a076e18-9119-4004-9bd2-e70b7c0b1927_2dimension_510x672.jpg" alt="">
+                    <img src="https://img.wowdsgn.com/page/banners/7a076e18-9119-4004-9bd2-e70b7c0b1927_2dimension_510x672.jpg" alt="" @click="toDolist">
                 </div>
 
             </div>
@@ -201,10 +201,10 @@
             <div class="kafei-title"></div>
             <div class="kafei-h">
                 <div class="kafei-hb">
-                    <img src="https://img.wowdsgn.com/page/banners/73b2f4d7-343b-4c51-90f4-7a5d0950d51b_2dimension_513x690.jpg" alt="">
+                    <img src="https://img.wowdsgn.com/page/banners/73b2f4d7-343b-4c51-90f4-7a5d0950d51b_2dimension_513x690.jpg" alt="" @click="toDolist">
                 </div>
                  <div class="kafei-hb">
-                     <img src="https://img.wowdsgn.com/page/banners/7347e706-359e-4e8c-9cb1-0816cb8695e6_2dimension_513x690.jpg" alt="">
+                     <img src="https://img.wowdsgn.com/page/banners/7347e706-359e-4e8c-9cb1-0816cb8695e6_2dimension_513x690.jpg" alt="" @click="toDolist">
                  </div>
             </div>
         </div>
@@ -215,7 +215,7 @@
             <div class="gelantitle"></div>
             <div class="gelan-h">
                     <div class="gelan-hd">
-                        <img src="https://img.wowdsgn.com/page/banners/1f866149-3869-4f2e-b555-65d7c28b6d38_2dimension_513x690.jpg" alt="">
+                        <img src="https://img.wowdsgn.com/page/banners/1f866149-3869-4f2e-b555-65d7c28b6d38_2dimension_513x690.jpg" alt="" @click="toDolist">
                     </div>
                     <div class="gelan-hd">
                         <img src="https://img.wowdsgn.com/page/banners/d5652438-18a4-4700-a169-a2994daa1b21_2dimension_513x678.png" alt="">
@@ -228,7 +228,7 @@
         <div class="guodu-1"></div>
         <div class="guodu13"></div>
         <div class="canting">
-            <img src="https://img.wowdsgn.com/page/banners/119b853b-0b49-490c-b9c0-b274af6e71e7_2dimension_1125x375.jpg" alt="">
+            <img src="https://img.wowdsgn.com/page/banners/119b853b-0b49-490c-b9c0-b274af6e71e7_2dimension_1125x375.jpg" alt="" @click="toDolist">
         </div>
 
         <!-- 餐桌 -->
@@ -259,10 +259,10 @@
             <div class="bujing-title"></div>
             <div class="bujing-h">
                     <div class="bujing-hd">
-                        <img src="https://img.wowdsgn.com/page/banners/4dde53c0-8b8f-4d7e-afd9-df62355061a5_2dimension_519x681.jpg" alt="">
+                        <img src="https://img.wowdsgn.com/page/banners/4dde53c0-8b8f-4d7e-afd9-df62355061a5_2dimension_519x681.jpg" alt="" @click="toDolist">
                     </div>
                     <div class="bujing-hd">
-                        <img src="https://img.wowdsgn.com/page/banners/141a5d2b-7870-4730-8a39-2112d96d090a_2dimension_510x675.jpg" alt="">
+                        <img src="https://img.wowdsgn.com/page/banners/141a5d2b-7870-4730-8a39-2112d96d090a_2dimension_510x675.jpg" alt="" @click="toDolist">
                     </div>
             </div>
         </div>
@@ -273,10 +273,10 @@
             <div class="baiye-title"></div>
             <div class="baiye-h">
                     <div class="baiye-hd">
-                        <img src="https://img.wowdsgn.com/page/banners/d338d592-7e0a-4a01-9f28-f7e57d0eff69_2dimension_510x690.jpg" alt="">
+                        <img src="https://img.wowdsgn.com/page/banners/d338d592-7e0a-4a01-9f28-f7e57d0eff69_2dimension_510x690.jpg" alt="" @click="toDolist">
                     </div>
                     <div class="baiye-hd">
-                        <img src="https://img.wowdsgn.com/page/banners/b0c4516c-e4e6-40bd-af4d-ba724741dda6_2dimension_510x690.jpg" alt="">
+                        <img src="https://img.wowdsgn.com/page/banners/b0c4516c-e4e6-40bd-af4d-ba724741dda6_2dimension_510x690.jpg" alt="" @click="toDolist">
                     </div>
             </div>
         </div>
@@ -287,10 +287,10 @@
             <div class="jidong-title"></div>
             <div class="jidong-h">
                     <div class="jidong-hd">
-                        <img src="https://img.wowdsgn.com/page/banners/43c3c1ca-7764-4fac-8184-481577d1a0d4_2dimension_510x690.jpg" alt="">
+                        <img src="https://img.wowdsgn.com/page/banners/43c3c1ca-7764-4fac-8184-481577d1a0d4_2dimension_510x690.jpg" alt="" @click="toDolist">
                     </div>
                     <div class="jidong-hd">
-                        <img src="https://img.wowdsgn.com/page/banners/24252b14-ade7-409c-be93-15e25228aeb2_2dimension_510x693.jpg" alt="">
+                        <img src="https://img.wowdsgn.com/page/banners/24252b14-ade7-409c-be93-15e25228aeb2_2dimension_510x693.jpg" alt="" @click="toDolist">
                     </div>
             </div>
         </div>
@@ -300,7 +300,7 @@
         <div class="guodu-2"></div>
         <div class="guodu20"></div>
         <div class="woshi">
-            <img src="https://img.wowdsgn.com/page/banners/c4e99cc5-7765-4899-b6f5-81f08735153d_2dimension_1125x375.jpg" alt="">
+            <img src="https://img.wowdsgn.com/page/banners/c4e99cc5-7765-4899-b6f5-81f08735153d_2dimension_1125x375.jpg" alt="" @click="toDolist">
         </div>
 
         <!-- 床头柜 -->
@@ -331,7 +331,7 @@
             <div class="aer-title"></div>
             <div class="aer-h">
                     <div class="aer-hd">
-                        <img src="https://img.wowdsgn.com/page/banners/8c2beb0d-2134-46e5-b17f-6468a2783fc0_2dimension_513x690.jpg" alt="">
+                        <img src="https://img.wowdsgn.com/page/banners/8c2beb0d-2134-46e5-b17f-6468a2783fc0_2dimension_513x690.jpg" alt="" @click="toDolist">
                     </div>
                     <div class="aer-hd">
                         <img src="https://img.wowdsgn.com/page/banners/b432ba19-5818-4c71-95b8-f6049aea92fd_2dimension_513x690.jpg" alt="">
@@ -345,10 +345,10 @@
             <div class="xiaogua-title"></div>
             <div class="xiaogua-h">
                     <div class="xiaogua-hd">
-                        <img src="https://img.wowdsgn.com/page/banners/258bfcf7-da62-4fad-b0af-5443ef009ac8_2dimension_513x678.jpg" alt="">
+                        <img src="https://img.wowdsgn.com/page/banners/258bfcf7-da62-4fad-b0af-5443ef009ac8_2dimension_513x678.jpg" alt="" @click="toDolist">
                     </div>
                     <div class="xiaogua-hd">
-                        <img src="https://img.wowdsgn.com/page/banners/5cb41127-bbf2-452f-b249-106c2e33e143_2dimension_513x678.jpg" alt="">
+                        <img src="https://img.wowdsgn.com/page/banners/5cb41127-bbf2-452f-b249-106c2e33e143_2dimension_513x678.jpg" alt="" @click="toDolist">
                     </div>
             </div>
         </div>
@@ -358,7 +358,7 @@
         <div class="guodu-3"></div>
         <div class="guodu26"></div>
         <div class="shufang">
-            <img src="https://img.wowdsgn.com/page/banners/fe5d909c-3fb9-4e73-a424-b6d65c7a54ae_2dimension_1125x375.jpg" alt="">
+            <img @click="toDolist" src="https://img.wowdsgn.com/page/banners/fe5d909c-3fb9-4e73-a424-b6d65c7a54ae_2dimension_1125x375.jpg" alt="">
         </div>
 
         <!-- 书桌 -->
@@ -378,10 +378,10 @@
             <div class="shenjiang-title"></div>
             <div class="shenjiang-h">
                     <div class="shenjiang-hd">
-                        <img src="https://img.wowdsgn.com/page/banners/bc9e802a-4263-4ea5-85aa-d7d90f69f912_2dimension_513x678.jpg" alt="">
+                        <img @click="toDolist" src="https://img.wowdsgn.com/page/banners/bc9e802a-4263-4ea5-85aa-d7d90f69f912_2dimension_513x678.jpg" alt="">
                     </div>
                     <div class="shenjiang-hd">
-                        <img src="https://img.wowdsgn.com/page/banners/69d9126d-57e2-4081-b818-38281830b3c4_2dimension_522x684.jpg" alt="">
+                        <img @click="toDolist" src="https://img.wowdsgn.com/page/banners/69d9126d-57e2-4081-b818-38281830b3c4_2dimension_522x684.jpg" alt="">
                     </div>
             </div>
         </div>
@@ -419,7 +419,7 @@
         <div class="guodu-4"></div>
         <div class="guodu32"></div>
         <div class="xaunguan">
-            <img src="https://img.wowdsgn.com/page/banners/43420161-f326-4a1b-8d12-68f05d2948b2_2dimension_1125x375.jpg" alt="">
+            <img @click="toDolist" src="https://img.wowdsgn.com/page/banners/43420161-f326-4a1b-8d12-68f05d2948b2_2dimension_1125x375.jpg" alt="">
         </div>
 
          <!-- 玄关柜 -->
@@ -448,10 +448,10 @@
             <div class="yili-title"></div>
             <div class="yili-h">
                     <div class="yili-hd">
-                        <img src="https://img.wowdsgn.com/page/banners/b1979d56-a0a3-45a3-87a6-703dc5643837_2dimension_513x678.jpg" alt="">
+                        <img @click="toDolist" src="https://img.wowdsgn.com/page/banners/b1979d56-a0a3-45a3-87a6-703dc5643837_2dimension_513x678.jpg" alt="">
                     </div>
                     <div class="yili-hd">
-                        <img src="https://img.wowdsgn.com/page/banners/e4a86a15-836a-4ff8-aebb-386cbc41a272_2dimension_513x678.jpg" alt="">
+                        <img @click="toDolist" src="https://img.wowdsgn.com/page/banners/e4a86a15-836a-4ff8-aebb-386cbc41a272_2dimension_513x678.jpg" alt="">
                     </div>
             </div>
         </div>
@@ -462,10 +462,10 @@
             <div class="yuanyi-title"></div>
             <div class="yuanyi-h">
                     <div class="yuanyi-hd">
-                        <img src="https://img.wowdsgn.com/page/banners/c57ba91f-deb3-43b0-a70d-81c90cc39e14_2dimension_513x690.jpg" alt="">
+                        <img @click="toDolist" src="https://img.wowdsgn.com/page/banners/c57ba91f-deb3-43b0-a70d-81c90cc39e14_2dimension_513x690.jpg" alt="">
                     </div>
                     <div class="yuanyi-hd">
-                        <img src="https://img.wowdsgn.com/page/banners/399ed035-a82a-4b2f-b5d4-3b2d45b9dbd3_2dimension_513x690.jpg" alt="">
+                        <img @click="toDolist" src="https://img.wowdsgn.com/page/banners/399ed035-a82a-4b2f-b5d4-3b2d45b9dbd3_2dimension_513x690.jpg" alt="">
                     </div>
             </div>
         </div>
@@ -476,10 +476,10 @@
             <div class="diping-title"></div>
             <div class="diping-h">
                     <div class="diping-hd">
-                        <img src="https://img.wowdsgn.com/page/banners/e6ad34a2-d085-4a7f-8a61-4425ebd73a98_2dimension_513x690.jpg" alt="">
+                        <img @click="toDolist" src="https://img.wowdsgn.com/page/banners/e6ad34a2-d085-4a7f-8a61-4425ebd73a98_2dimension_513x690.jpg" alt="">
                     </div>
                     <div class="diping-hd">
-                        <img src="https://img.wowdsgn.com/page/banners/c1c0de12-8256-4d70-a13c-8bfa4b2f9005_2dimension_513x690.jpg" alt="">
+                        <img @click="toDolist" src="https://img.wowdsgn.com/page/banners/c1c0de12-8256-4d70-a13c-8bfa4b2f9005_2dimension_513x690.jpg" alt="">
                     </div>
             </div>
         </div>
@@ -489,7 +489,7 @@
         <div class="guodu-5"></div>
         <div class="guodu39"></div>
         <div class="jiashi">
-            <img src="https://img.wowdsgn.com/page/banners/c338ba49-83a1-4390-9f3a-a7021e845eac_2dimension_1125x378.jpg" alt="">
+            <img @click="toDolist" src="https://img.wowdsgn.com/page/banners/c338ba49-83a1-4390-9f3a-a7021e845eac_2dimension_1125x378.jpg" alt="">
         </div>
 
         <!-- 挂画 -->
@@ -651,7 +651,7 @@ export default {
   },
   methods: {
     toDolist (id) {
-      this.$router.push(`/item/${id}`)
+      this.$router.push(`/details`)
     },
     handleChangePage () {
       this.$router.push('/search')
@@ -667,15 +667,17 @@ export default {
       priceLists: [],
       productTitles: [],
       sellPrices: [],
+      
       priceLists2: [],
       activeName: 'second'
     }
   },
   created () {
-    instance
-      .get(`/v2/page?pageId=1&tabId=1&${this.$route.params.id}`)
+    axios
+      .get(`/v2/page?pageId=1&tabId=1&currentPage=1&pageSize=8&_=1586700092963`)
+
       .then(res => {
-        console.log(res)
+        // console.log(res)
         // console.log(res.data.data.modules[6].moduleContent.products)
         this.banners = res.data.data.modules[0].moduleContent.banners
         this.Lists = res.data.data.modules[2].moduleContent.banners

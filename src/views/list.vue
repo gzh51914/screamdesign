@@ -38,8 +38,6 @@
 </template>
 
 <script>
-// import Vue from 'vue'
-// import { ListPage } from "../utils/http"
 export default {
   data () {
     return {
@@ -65,6 +63,7 @@ export default {
     }
     .list{
         margin: .15rem;
+        background:#fff;
         #tab-2{
             margin: .1rem 0 ;
         }
