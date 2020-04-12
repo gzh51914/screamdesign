@@ -63,6 +63,87 @@ const routes = [
   {
     path: '/',
     redirect: '/home'
+  },
+  {
+    path: '/tui',
+    name: 'tui',
+    component: () => import('../views/mine/Tui.vue'),
+    meta: {
+      footShow: false
+    }
+  },
+  {
+    path: '/colle',
+    name: 'colle',
+    component: () => import('../views/mine/Colle.vue'),
+    meta: {
+      footShow: false
+    }
+  },
+  {
+    path: '/disc',
+    name: 'disc',
+    component: () => import('../views/mine/Disc.vue'),
+    meta: {
+      footShow: false
+    }
+  },
+  {
+    path: '/total/:id',
+    name: 'total',
+    component: () => import('../views/mine/Total.vue'),
+    meta: {
+      footShow: false
+    },
+    props: true
+  },
+  {
+    path: '/person',
+    name: 'person',
+    component: () => import('../views/mine/Person.vue'),
+    meta: {
+      footShow: false
+    }
+  },
+  {
+    path: '/sex',
+    name: 'sex',
+    component: () => import('../views/mine/Sex.vue'),
+    meta: {
+      footShow: false
+    }
+  },
+  {
+    path: '/signa',
+    name: 'signa',
+    component: () => import('../views/mine/Signa.vue'),
+    meta: {
+      footShow: false
+    }
+  },
+  {
+    path: '/occu',
+    name: 'occu',
+    component: () => import('../views/mine/Occu.vue'),
+    meta: {
+      footShow: false
+    }
+  },
+  {
+    path: '/site',
+    name: 'site',
+    component: () => import('../views/mine/Site.vue'),
+    meta: {
+      footShow: false
+    }
+  },
+  {
+    path: '/nick',
+    name: 'nick',
+    component: () => import('../views/mine/Nick.vue'),
+    meta: {
+      footShow: false
+    }
   }
 ]
 
