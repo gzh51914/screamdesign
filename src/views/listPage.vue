@@ -41,7 +41,7 @@
                     v-for="item in datalist"
                     :key="item.parentProductId"
                     :to="{
-                        name:'list',
+                        name:'details',
                         params:{id:item.parentProductId}
                     }"
                     tag="li">
@@ -122,6 +122,7 @@ export default {
         header{
         width: 100%;
         height:  .4rem;
+        background:#fff;
         #home{
             position: absolute;
             width: .24rem;
