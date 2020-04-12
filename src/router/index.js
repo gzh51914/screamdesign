@@ -16,6 +16,18 @@ const routes = [
     path: '/list',
     name: 'list',
     component: () => import('../views/list.vue'),
+    beforeEnter (to, from, next) {
+      console.log('进入Center了哦....')
+      next()
+    },
+    meta: {
+      footShow: true
+    }
+  },
+  { // 钊哥在这里写了一个list的下一级路由
+    path: '/listPage/:id', // 携带参数
+    name: 'listPage',
+    component: () => import('../views/listPage.vue'),
     meta: {
       footShow: true
     }
