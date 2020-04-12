@@ -25,13 +25,37 @@ const routes = [
     name: 'shopCart',
     component: () => import('../views/shopCart.vue'),
     meta: {
-      footShow: false
+      footShow: true
     }
   },
   {
     path: '/news',
     name: 'news',
     component: () => import('../views/news.vue'),
+    meta: {
+      footShow: true
+    }
+  },
+  {
+    path: '/news/newslist/:id',
+    name: 'newslist',
+    component: () => import('../views/newslist.vue'),
+    meta: {
+      footShow: true
+    }
+  },
+  {
+    path: '/coupon',
+    name: 'coupon',
+    component: () => import('../views/coupon.vue'),
+    meta: {
+      footShow: true
+    }
+  },
+  {
+    path: '/topic/:id',
+    name: 'topic',
+    component: () => import('../views/topic.vue'),
     meta: {
       footShow: true
     }
@@ -61,14 +85,6 @@ const routes = [
     }
   },
   {
-    path: '/order',
-    name: 'order',
-    component: () => import('../views/order.vue'),
-    meta: {
-      footShow: false
-    }
-  },
-  {
     path: '/',
     redirect: '/home'
   }
@@ -80,7 +96,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.path === '/news' || to.path === '/mine' || to.path === '/shopCart') {
+  if (to.path === '/news' || to.path === '/mine') {
     if (localStorage.getItem('token')) {
       next()
     } else {

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <nav v-if="$route.meta.footShow">
-      <ul>
+    <nav>
+      <ul v-if="$route.meta.footShow">
         <router-link
           v-for="nav in navList"
           :key="nav.id"

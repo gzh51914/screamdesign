@@ -78,7 +78,7 @@
 
 <script>
 import Vue from "vue";
-import { Button, Field, CellGroup, NavBar, Toast } from "vant";
+import { Button, Field, CellGroup, NavBar } from "vant";
 import { instance2 } from "@/utils/http";
 import SIdentify from "@/components/identify.vue";
 
@@ -87,21 +87,20 @@ Vue.use(NavBar);
 Vue.use(Button);
 Vue.use(Field);
 Vue.use(CellGroup);
-Vue.use(Toast);
 
 export default {
   data() {
     return {
-      username: "",
-      password: "",
-      password1: "",
+      username: 18269137161,
+      password: "a123456",
+      password1: "a123456",
       errormsg: "",
       errorpsw: "",
       errorpsw1: "",
       errormsg1: "",
       errorpsw2: "",
       errorverify: "",
-      usernamelogin: "",
+      usernamelogin: 18269137161,
       passwordlogin: "",
       verify: "",
       identifyCodes: "1234567890",
@@ -225,12 +224,9 @@ export default {
             password: this.passwordlogin
           })
           .then(res => {
-            console.log(res);
+            console.log(res.data);
             if (res.data.type === 1) {
-              Toast("登录成功");
               localStorage.setItem("token", res.data.authorization);
-              localStorage.setItem("uid",res.data.datalist.uid)
-              localStorage.setItem("username",res.data.datalist.username)
               this.$router.replace(localStorage.getItem("path"));
             }
           })

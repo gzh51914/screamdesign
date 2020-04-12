@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-// 这个instance是针对于尖叫设计的接口
+// 这个instance是针对于kissmilian的接口
 const instance = axios.create({
   baseURL: '/info' // 基本的url
 })
