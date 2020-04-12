@@ -5,8 +5,10 @@ import store from './store'
 import '@/utils/rem'
 import '@/stylesheets/main.scss'
 import '../src/utils/directive'
+import axios from "axios";
 
 Vue.config.productionTip = false
+Vue.prototype.$axios = axios;
 
 new Vue({
   router,

@@ -667,15 +667,13 @@ export default {
       priceLists: [],
       productTitles: [],
       sellPrices: [],
-      
       priceLists2: [],
       activeName: 'second'
     }
   },
   created () {
-    axios
-      .get(`/v2/page?pageId=1&tabId=1&currentPage=1&pageSize=8&_=1586700092963`)
-
+    instance
+      .get(`/v2/page?pageId=1&tabId=1&${this.$route.params.id}`)
       .then(res => {
         // console.log(res)
         // console.log(res.data.data.modules[6].moduleContent.products)

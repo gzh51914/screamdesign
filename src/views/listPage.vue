@@ -122,7 +122,6 @@ export default {
         header{
         width: 100%;
         height:  .4rem;
-        background:#fff;
         #home{
             position: absolute;
             width: .24rem;

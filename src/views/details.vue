@@ -95,7 +95,7 @@ export default {
         "https://img.wowdsgn.com/product/images/05884cc0-ef27-4aac-a2f9-db621ffba18e.jpg",
         "https://img.wowdsgn.com/product/images/a93269f6-5d1d-4b38-8153-17ac69323dec_2dimension_800x800.jpg"
       ],
-      data: {id: 1567,name:"ARTISAN", price:"99999",num:1,isok:1,img:"https://img.wowdsgn.com/product/images/299d0eab-9c5b-4ce2-9b7d-005e179ba26a.jpg"},
+      data: {goods_id: 1567,name:"ARTISAN", price:"99999",num:1,isok:1,img:"https://img.wowdsgn.com/product/images/299d0eab-9c5b-4ce2-9b7d-005e179ba26a.jpg"},
       productlist: [
         "https://img.wowdsgn.com/product/introduction/507ade29-0d44-49cb-8dcf-0a502c318656_2dimension_750x1330.jpg",
         "https://img.wowdsgn.com/product/introduction/79f1a271-1c87-4c1d-8227-0a2a1b0c4224_2dimension_750x1046.jpg",
@@ -108,27 +108,28 @@ export default {
     onClickLeft() {
       this.$router.push("/home");
     },
-    addcart () {
+    pushcart () {
         instance2.post("http://114.215.128.76:3000/goods/addcart", {
             uid: this.uid,
             name: this.data.name,
             num: this.data.num,
             price: this.data.price,
             img: this.data.img,
-            goods_id: this.data.id,
+            goods_id: this.data.goods_id,
             isok: this.data.isok
          }).then(res => {
              console.log(res);
-             if(res.data.type == 1) {
-                 Toast("加入购物车成功");
-             }
          })
+    },
+    addcart () {
+        this.pushcart()
+        Toast("加入购物车成功");
     },
     goshopcart () {
         this.$router.push("shopCart")
     },
     goorder () {
-      this.addcart()
+      this.pushcart()
       this.$router.push("shopCart")
     }
   },

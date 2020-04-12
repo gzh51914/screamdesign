@@ -10,12 +10,12 @@ module.exports = {
           '^/api': ''
         }
       },
-      '/v': {
+      '/info': {
         target: 'https://m.wowdsgn.com',
         changeOrigin: true,
-        // pathRewrite: {
-        //   '^/info': ''
-        // }
+        pathRewrite: {
+          '^/info': ''
+        }
       }
     }
   },
