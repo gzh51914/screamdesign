@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="brand-details">
     <img
       src="https://img.wowdsgn.com/topic/banners/112c11d0-1c7c-4c4f-a092-833f9543dc11_2dimension_750x600.jpg?imageslim"
@@ -909,4 +910,18 @@ export default {
     }
   }
 }
+=======
+    <div class="topic">
+        topi~~~~
+    </div>
+</template>
+
+<script>
+export default {
+}
+</script>
+
+<style lang="scss" scoped>
+
+>>>>>>> lgd
 </style>

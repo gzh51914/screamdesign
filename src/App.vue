@@ -1,7 +1,13 @@
 <template>
   <div id="app">
+<<<<<<< HEAD
     <nav v-if="$route.meta.footShow">
       <ul>
+=======
+    <router-view />
+    <nav>
+      <ul v-if="$route.meta.footShow">
+>>>>>>> lgd
         <router-link
           v-for="nav in navList"
           :key="nav.id"
@@ -9,21 +15,22 @@
           tag="li"
           active-class="active"
         >
-          <van-icon :name="nav.icon" size="20"/>
+          <van-icon :name="nav.icon" size="20" />
           <span>{{nav.title}}</span>
         </router-link>
       </ul>
     </nav>
-    <router-view/>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import { Icon } from 'vant'
+<<<<<<< HEAD
 
+=======
+>>>>>>> lgd
 Vue.use(Icon)
-
 export default {
   data () {
     return {
@@ -70,22 +77,22 @@ export default {
 </script>
 
 <style lang="scss">
-.active{
-    color:#000;
+.active {
+  color: #000;
 }
-nav{
+nav {
   position: fixed;
-  left:0px;
-  bottom:0px;
-  width:100%;
-  height:0.5rem;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: 0.5rem;
   background: #fff;
-  z-index:10;
+  z-index: 10;
   color: #808080;
-ul{
-  display: flex;
-    li{
-      flex:1;
+  ul {
+    display: flex;
+    li {
+      flex: 1;
       line-height: 0.25rem;
       text-align: center;
       display: flex;
