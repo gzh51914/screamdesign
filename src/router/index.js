@@ -49,6 +49,30 @@ const routes = [
     }
   },
   {
+    path: '/news/newslist/:id',
+    name: 'newslist',
+    component: () => import('../views/newslist.vue'),
+    meta: {
+      footShow: true
+    }
+  },
+  {
+    path: '/coupon',
+    name: 'coupon',
+    component: () => import('../views/coupon.vue'),
+    meta: {
+      footShow: true
+    }
+  },
+  {
+    path: '/topic/:id',
+    name: 'topic',
+    component: () => import('../views/topic.vue'),
+    meta: {
+      footShow: true
+    }
+  },
+  {
     path: '/mine',
     name: 'mine',
     component: () => import('../views/mine.vue'),

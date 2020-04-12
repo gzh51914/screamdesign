@@ -13,7 +13,7 @@ body{
 	font-size:14px; 
 	font-family:"微软雅黑"; 
 	color:#666; 
-	background:#fff; // 因为先引入了_base.scss文件，所以才可以获取到$bg-color这个变量
+	background:#F5F5F5; // 因为先引入了_base.scss文件，所以才可以获取到$bg-color这个变量
 }
 
 * {
