@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <van-nav-bar title="登录" right-text="快速注册" left-arrow @click-right="onClickRight">
-      <van-icon name="home-o" slot="left" size="22" color="#000" @click="goto"/>
+      <van-icon name="home-o" slot="left" size="22" color="#000" @click="goto" />
     </van-nav-bar>
     <!-- register -->
     <van-cell-group class="reg" v-show="!isShow" :border="border">
@@ -77,6 +77,7 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import Vue from "vue";
 import { Button, Field, CellGroup, NavBar, Toast } from "vant";
 import { instance2 } from "@/utils/http";
@@ -87,9 +88,23 @@ Vue.use(Button);
 Vue.use(Field);
 Vue.use(CellGroup);
 Vue.use(Toast);
+=======
+import Vue from 'vue'
+import { Button, Field, CellGroup, NavBar } from 'vant'
+import { instance2 } from '@/utils/http'
+import SIdentify from '@/components/identify.vue'
+
+Vue.use(SIdentify)
+Vue.use(NavBar)
+Vue.use(Button)
+Vue.use(Field)
+Vue.use(CellGroup)
+
+>>>>>>> my
 export default {
-  data() {
+  data () {
     return {
+<<<<<<< HEAD
       username: "",
       password: "",
       password1: "",
@@ -104,125 +119,142 @@ export default {
       verify: "",
       identifyCodes: "1234567890",
       identifyCode: "",
+=======
+      username: 18269137161,
+      password: 'a123456',
+      password1: 'a123456',
+      errormsg: '',
+      errorpsw: '',
+      errorpsw1: '',
+      errormsg1: '',
+      errorpsw2: '',
+      errorverify: '',
+      usernamelogin: 18269137161,
+      passwordlogin: '',
+      verify: '',
+      identifyCodes: '1234567890',
+      identifyCode: '',
+>>>>>>> my
       border: false,
       isShow: true
-    };
+    }
   },
   components: {
     SIdentify
   },
-  mounted() {
-    this.identifyCode = "";
-    this.makeCode(this.identifyCodes, 4);
+  mounted () {
+    this.identifyCode = ''
+    this.makeCode(this.identifyCodes, 4)
   },
   methods: {
-    onClickRight() {
-      this.isShow = !this.isShow;
+    onClickRight () {
+      this.isShow = !this.isShow
     },
     goto () {
       this.$router.push('/home')
     },
     // register-verifyuser
-    verifyuser() {
-      const regPhone = /^1[3-9]\d{9}$/;
-      const regEmail = /[\w-]+(\.[\w-]+)*@([\w-]+\.)+\w{2,14}/;
+    verifyuser () {
+      const regPhone = /^1[3-9]\d{9}$/
+      const regEmail = /[\w-]+(\.[\w-]+)*@([\w-]+\.)+\w{2,14}/
       if (regPhone.test(this.username) || regEmail.test(this.username)) {
-        this.errormsg = "";
+        this.errormsg = ''
       } else {
-        this.errormsg = "手机号/邮箱格式错误";
+        this.errormsg = '手机号/邮箱格式错误'
       }
     },
     // register- verifypsw
-    verifypsw() {
-      const regpsw = /^[a-zA-Z]\w{5,10}$/;
+    verifypsw () {
+      const regpsw = /^[a-zA-Z]\w{5,10}$/
       if (regpsw.test(this.password)) {
-        this.errorpsw = "";
+        this.errorpsw = ''
       } else {
-        this.errorpsw = "密码格式错误";
+        this.errorpsw = '密码格式错误'
       }
     },
     // register- verifypsw2
-    verifypsw2() {
+    verifypsw2 () {
       if (this.password === this.password1) {
-        this.errorpsw1 = "";
+        this.errorpsw1 = ''
       } else {
-        this.errorpsw1 = "两次密码不一致";
+        this.errorpsw1 = '两次密码不一致'
       }
     },
     // freeReg
-    freeReg() {
+    freeReg () {
       if (!this.errormsg && !this.errorpsw && !this.errorpsw1) {
         instance2
-          .post("http://114.215.128.76:3000/user/reg ", {
+          .post('http://114.215.128.76:3000/user/reg ', {
             username: this.username,
             password: this.password
           })
           .then(res => {
-            console.log(res.data);
+            console.log(res.data)
             if (res.data.type === 0) {
-              this.errormsg = "用户名已存在";
+              this.errormsg = '用户名已存在'
             } else {
-              this.isShow = !this.isShow;
+              this.isShow = !this.isShow
             }
-          });
+          })
       }
     },
     // login-usernameLogin
-    usernameLogin() {
-      const loginPhone = /^1[3-9]\d{9}$/;
-      const loginEmail = /[\w-]+(\.[\w-]+)*@([\w-]+\.)+\w{2,14}/;
+    usernameLogin () {
+      const loginPhone = /^1[3-9]\d{9}$/
+      const loginEmail = /[\w-]+(\.[\w-]+)*@([\w-]+\.)+\w{2,14}/
       if (
         loginPhone.test(this.usernamelogin) ||
         loginEmail.test(this.usernamelogin)
       ) {
-        this.errormsg1 = "";
+        this.errormsg1 = ''
       } else {
-        this.errormsg1 = "手机号/邮箱输入错误";
+        this.errormsg1 = '手机号/邮箱输入错误'
       }
     },
     // login-passwordLogin
-    passwordLogin() {
-      const loginpsw = /^[a-zA-Z]\w{5,10}$/;
+    passwordLogin () {
+      const loginpsw = /^[a-zA-Z]\w{5,10}$/
       if (loginpsw.test(this.passwordlogin)) {
-        this.errorpsw2 = "";
+        this.errorpsw2 = ''
       } else {
-        this.errorpsw2 = "密码输入错误";
+        this.errorpsw2 = '密码输入错误'
       }
     },
     // randomNum And verifyCode And makeCode
-    randomNum(min, max) {
-      return Math.floor(Math.random() * (max - min) + min);
+    randomNum (min, max) {
+      return Math.floor(Math.random() * (max - min) + min)
     },
-    verifyCode() {
-      this.identifyCode = "";
-      this.makeCode(this.identifyCodes, 4);
+    verifyCode () {
+      this.identifyCode = ''
+      this.makeCode(this.identifyCodes, 4)
     },
-    makeCode(o, l) {
+    makeCode (o, l) {
       for (let i = 0; i < l; i++) {
         this.identifyCode += this.identifyCodes[
           this.randomNum(0, this.identifyCodes.length)
-        ];
+        ]
       }
     },
     // login-verifyCodeLogin
-    verifyCodeLogin() {
-      console.log(this.identifyCode);
+    verifyCodeLogin () {
+      console.log(this.identifyCode)
       if (this.verify === this.identifyCode) {
-        this.errorverify = "";
+        this.errorverify = ''
       } else {
-        this.errorverify = "验证码错误";
+        this.errorverify = '验证码错误'
       }
     },
     //  userLogin
-    userLogin() {
-      // console.log(this.usernamelogin, this.passwordlogin);
+    userLogin () {
+      console.log(this.usernamelogin, this.passwordlogin)
       if (!this.errormsg1 && !this.errorpsw2 && !this.errorverify) {
         instance2
-          .post("http://114.215.128.76:3000/user/login", {
+          .post('http://114.215.128.76:3000/user/login', {
             username: this.usernamelogin,
             password: this.passwordlogin
           })
           .then(res => {
+<<<<<<< HEAD
             console.log(res);
             if (res.data.type === 1) {
               Toast("登录成功");
@@ -230,6 +262,13 @@ export default {
               localStorage.setItem("uid",res.data.datalist.uid)
               localStorage.setItem("username",res.data.datalist.username)
               this.$router.replace(localStorage.getItem("path"));
+=======
+            console.log(res)
+            if (res.data.type === 1) {
+              localStorage.setItem('token', res.data.authorization)
+              localStorage.setItem('username', this.usernamelogin)
+              this.$router.replace(localStorage.getItem('path'))
+>>>>>>> my
             }
           })
       }
@@ -257,6 +296,6 @@ export default {
   border: 0;
 }
 .van-button::before {
-  -webkit-tap-highlight-color:transparent
+  -webkit-tap-highlight-color: transparent;
 }
 </style>

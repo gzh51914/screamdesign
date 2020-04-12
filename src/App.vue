@@ -20,6 +20,10 @@
         </router-link>
       </ul>
     </nav>
+<<<<<<< HEAD
+=======
+    <router-view />
+>>>>>>> my
   </div>
 </template>
 
@@ -27,6 +31,9 @@
 import Vue from 'vue'
 import { Icon } from 'vant'
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> my
 
 =======
 >>>>>>> lgd
