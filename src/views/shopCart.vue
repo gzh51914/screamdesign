@@ -142,6 +142,7 @@ export default {
     },
     // 删除商品
     delgoods () {
+      
       Dialog.confirm({
         message: '确定删除该商品吗'
       }).then((action) => {
@@ -150,6 +151,8 @@ export default {
          let j= this.cartdata.filter(ele => {
                 if(ele.isok){
                   deleteid.push(ele.goods_id)
+                }else {
+                  Toast('请选择要删除的商品')
                 }
              }
           )
@@ -164,9 +167,7 @@ export default {
                 this.getorder()
               }
             })
-          } else {
-            Toast('请选择要删除的商品')
-          }
+          } 
         }
       }).catch((error) => {
       });
@@ -179,7 +180,7 @@ export default {
            return ele.isok?ele:""
              }
           )
-          console.log(this.total,this.allprice,j)
+          // console.log(this.total,this.allprice,j)
       this.$router.push({name: 'order', query: {orderlist:j,total:this.total,allprice:this.allprice}});
     }
   },

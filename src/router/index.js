@@ -24,7 +24,7 @@ const routes = [
       footShow: true
     }
   },
-  { // 钊哥在这里写了一个list的下一级路由
+  { 
     path: '/listPage/:id', // 携带参数
     name: 'listPage',
     component: () => import('../views/listPage.vue'),
@@ -89,6 +89,38 @@ const routes = [
     }
   },
   {
+    path: '/Person',
+    name: 'Person',
+    component: () => import('../views/mine/Person.vue'),
+    meta: {
+      footShow: true
+    }
+  },
+  {
+    path: '/Colle',
+    name: 'Colle',
+    component: () => import('../views/mine/Colle.vue'),
+    meta: {
+      footShow: true
+    }
+  },
+  {
+    path: '/Disc',
+    name: 'Disc',
+    component: () => import('../views/mine/Disc.vue'),
+    meta: {
+      footShow: true
+    }
+  },
+  {
+    path: '/Total',
+    name: 'Total',
+    component: () => import('../views/mine/Total.vue'),
+    meta: {
+      footShow: true
+    }
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import('../views/login.vue'),
@@ -106,6 +138,10 @@ const routes = [
   },
   {
     path: '/',
+    redirect: '/home'
+  },
+  {
+    path: '*',
     redirect: '/home'
   }
 ]

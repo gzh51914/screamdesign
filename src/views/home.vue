@@ -672,8 +672,8 @@ export default {
     }
   },
   created () {
-    instance
-      .get(`/v2/page?pageId=1&tabId=1&${this.$route.params.id}`)
+    this.$axios
+      .get(`/info/v2/page?pageId=1&tabId=1`)
       .then(res => {
         // console.log(res)
         // console.log(res.data.data.modules[6].moduleContent.products)

@@ -1,7 +1,7 @@
 <template>
   <div class="mine">
     <div class="top" @click="person">
-      <img src="../assets/default_portrait.png.png" alt />
+      <img src="../logo/person.png" alt />
       <div class="top_text">
         <p>{{username}}</p>
       </div>

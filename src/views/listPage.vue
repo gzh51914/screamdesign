@@ -59,6 +59,7 @@
 import { instance } from '@/utils/http'
 import Swiper from '@/components/swiper'
 import Swip from 'swiper'
+import axios from 'axios'
 export default {
   components: {
     Swiper // 注册组件Swiper
@@ -77,7 +78,7 @@ export default {
   },
   created () {
     this.Key == 1 ? this.fh = this.furniture : this.fh = this.household
-    instance.get(`/pages/category/${this.$route.params.ID}?currentPage=1`).then(res => {
+    this.$axios.get(`info/pages/category/${this.$route.params.ID}?currentPage=1`).then(res => {
       this.datalist = res.data.data
       if (this.Key == 1) {
         this.banners = this.furniture
@@ -100,19 +101,19 @@ export default {
     // }
     Fh (index, item) {
       this.Id = item
-      instance.get(`/pages/category/${index}?currentPage=1`).then(res => {
+      this.$axios.get(`/info/pages/category/${index}?currentPage=1`).then(res => {
         this.datalist = res.data.data
-        console.log(this.datalist)
+        // console.log(this.datalist)
       })
     },
     FH (index, item) {
-      instance.get(`/pages/category/${item.ID}?currentPage=${index + 1}`).then(res => {
+      this.$axios.get(`/info/pages/category/${item.ID}?currentPage=${index + 1}`).then(res => {
         this.datalist = res.data.data
-        console.log(this.datalist)
+        // console.log(this.datalist)
       })
     },
     tolistPage (id, key) {
-      this.$router.push(`/listPage/${id, key}`)
+      this.$router.push(`/info/listPage/${id, key}`)
     }
   }
 }
